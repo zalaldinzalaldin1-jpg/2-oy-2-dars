@@ -1,23 +1,13 @@
-const { getRandomMilliseconds } = require('./random.js');
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-class Person {
-  constructor(name, age) {
-    this.name = name;
-    this.age = age;
-  } 
-  getInfo() {
-    return `Name: ${this.name}, Age: ${this.age}`;
-  }
-}
-async function main() {
-  const ms = getRandomMilliseconds();
-  console.log(`Sleeping for ${ms} milliseconds...`);
+import { sleep } from "./sleep.js";
+import { getRandom } from "./random.js";
+import { Person } from "./person.js";
 
-  await sleep(ms);
-
-  const person = new Person('Ali', 30);
-  console.log(person.getInfo());
+async function demo() {
+  console.log("Kutishdan oldin");
+  await sleep(getRandom());
+  const person1 = new Person('Ali Valiyev', 1990);
+  console.log(person1.getInfo()); 
+  // console.log(person1.age); 
 }
-main();
+
+demo();
